@@ -602,6 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _followTarget: {fileID: 2050588222}
+  _offset: {x: 0, y: 30, z: -15}
 --- !u!1 &1986194419
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +907,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 428359966849929577, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
+      propertyPath: m_Name
+      value: Upper Wall L
+      objectReference: {fileID: 0}
+    - target: {fileID: 924622908647615866, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
+      propertyPath: m_Name
+      value: Upper Wall R
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346506159292223356, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
+      propertyPath: m_Name
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 1577045376717946953, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
       propertyPath: m_Name
       value: room_1
@@ -973,11 +986,19 @@ PrefabInstance:
     - target: {fileID: 3624437050374315358, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3ddbdb4537cec5e489dbf3c2fff5f7fa, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ac2593e83f1bc343b0b90aba5bf0590, type: 2}
+    - target: {fileID: 7058776952230411528, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
+      propertyPath: m_Name
+      value: Lower Wall L
+      objectReference: {fileID: 0}
+    - target: {fileID: 7921613452847480061, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
+      propertyPath: m_Name
+      value: Lower Wall R
+      objectReference: {fileID: 0}
     - target: {fileID: 7923704632405103718, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3ddbdb4537cec5e489dbf3c2fff5f7fa, type: 2}
+      objectReference: {fileID: 2100000, guid: 4ac2593e83f1bc343b0b90aba5bf0590, type: 2}
     - target: {fileID: 8049771908494645973, guid: 23a6ec6be3cb1d5469d5cb546f9b1314, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

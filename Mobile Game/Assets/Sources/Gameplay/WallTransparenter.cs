@@ -16,11 +16,11 @@ public class WallTransparenter : MonoBehaviour
 
     private void Start()
     {
-        _wallMaterial = Resources.Load($"Materials/WallMaterial", typeof(Material)) as Material;
+        _wallMaterial = Resources.Load($"Materials/LowerWallsMaterial", typeof(Material)) as Material;
 
         if (_wallMaterial == null)
         {
-            Debug.LogWarning("WallMaterial is null!");
+            Debug.LogWarning("Did not found LowerWallsMaterial");
             return;
         }
 
@@ -47,9 +47,7 @@ public class WallTransparenter : MonoBehaviour
                 return;
 
             Debug.Log("Walls are transparent now");
-            _wallMaterial.ToFadeMode();
-            _wallMaterial.ChangeAlpha(0.5f);
-            _wallsAreTransparent = true;
+            ChangeWallsTransparency(true);
         }
         else
         {
@@ -57,9 +55,7 @@ public class WallTransparenter : MonoBehaviour
                 return;
 
             Debug.Log("Walls aren't transparent now");
-            _wallMaterial.ToOpaqueMode();
-            _wallMaterial.ChangeAlpha(1f);
-            _wallsAreTransparent = false;
+            ChangeWallsTransparency(false);
         }
     }
 
@@ -67,6 +63,22 @@ public class WallTransparenter : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(_cameraTransform.position, _rayCastDirection * 100);
+    }
+    
+    private void ChangeWallsTransparency(bool transparent)
+    {
+        if (transparent)
+        {
+            _wallMaterial.ToFadeMode();
+            _wallMaterial.ChangeAlpha(0.5f);
+            _wallsAreTransparent = true;
+        }
+        else
+        {
+            _wallMaterial.ToOpaqueMode();
+            _wallMaterial.ChangeAlpha(1f);
+            _wallsAreTransparent = false;
+        }
     }
 
     private void OnApplicationQuit()

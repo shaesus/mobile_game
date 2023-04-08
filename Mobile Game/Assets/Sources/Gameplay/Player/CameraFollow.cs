@@ -4,12 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _followTarget;
 
-    private Vector3 _offset;
-
-    private void Awake()
-    {
-        _offset = transform.position;
-    }
+    [SerializeField] private Vector3 _offset;
 
     private void LateUpdate()
     {
