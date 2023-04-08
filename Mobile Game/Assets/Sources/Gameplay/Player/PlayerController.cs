@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody _rb;
 
-    private float _xInput;
-    private float _zInput;
+    private bool _isJoystickActive = false;
 
-    private Vector3 _movement;
+    private Vector3 _moveDirection;
+
+    private Vector2 _joystickCenter;
+    private Vector2 _fingerPoint;
 
     private void Awake()
     {
@@ -19,14 +21,36 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        _xInput = Input.GetAxisRaw("Horizontal");
-        _zInput = Input.GetAxisRaw("Vertical");
+        if (Input.GetMouseButtonDown(0))
+        {
+            _joystickCenter = new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                Camera.main.transform.position.z);
+        }
 
-        _movement = new Vector3(_xInput, 0, _zInput);
+        if (Input.GetMouseButton(0))
+        {
+            _isJoystickActive = true;
+            _fingerPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+                Camera.main.transform.position.z);
+        }
+        else
+        {
+            _isJoystickActive = false;
+        }
     }
 
     private void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + _movement * _moveSpeed * Time.fixedDeltaTime);
+        if (_isJoystickActive)
+        {
+            var offset = _fingerPoint - _joystickCenter;
+            _moveDirection = new Vector3(offset.x, 0, offset.y).normalized;
+            MovePlayer(_moveDirection, _moveSpeed);
+        }
+    }
+
+    private void MovePlayer(Vector3 direction, float speed)
+    {
+        _rb.MovePosition(_rb.position + direction * speed * Time.fixedDeltaTime);
     }
 }
