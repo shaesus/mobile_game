@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Rotator : MonoBehaviour
 {
-    protected Transform _followTarget;
+    public Transform FollowTarget { get; protected set; }
 
     protected Rigidbody _rb;
 
@@ -18,13 +18,13 @@ public class Rotator : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (_followTarget == null) return;
+        if (FollowTarget == null) return;
 
-        var unfixedDirection = _followTarget.position - _rb.position;
+        var unfixedDirection = FollowTarget.position - _rb.position;
         _rotationDirection = new Vector3(unfixedDirection.x, 0, unfixedDirection.z); //Fixed direction
 
         _angleToTarget = Vector3.Angle(_rotationDirection, Vector3.right);
-        if (_followTarget.position.z > _rb.position.z)
+        if (FollowTarget.position.z > _rb.position.z)
             _angleToTarget *= -1;
 
         _rb.rotation = Quaternion.Euler(0, _angleToTarget, 0); //Rotating only around Y-axis
