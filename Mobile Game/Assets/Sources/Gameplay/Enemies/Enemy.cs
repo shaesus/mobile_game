@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _maxHp = 100f;
     private float _currentHp;
 
+    [SerializeField] private float _damage = 30f;
+
     private Rigidbody _rb;
 
     private Transform _playerTransform;
@@ -60,6 +62,15 @@ public class Enemy : MonoBehaviour
         if (_currentHp <= 0) 
         {
             Die();
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<Player>(out var player))
+        {
+            TakeDamage(player.ContactDamage);
+            player.TakeDamage(_damage);
         }
     }
 }

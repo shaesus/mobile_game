@@ -18,7 +18,8 @@ public class Rotator : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (FollowTarget == null) return;
+        if (FollowTarget == null) 
+            return;
 
         var unfixedDirection = FollowTarget.position - _rb.position;
         _rotationDirection = new Vector3(unfixedDirection.x, 0, unfixedDirection.z); //Fixed direction

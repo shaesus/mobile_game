@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 1
   _maxHp: 100
+  _damage: 30
 --- !u!54 &96831933
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -750,6 +751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 1
   _maxHp: 100
+  _damage: 30
 --- !u!54 &1986194425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -921,6 +923,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b972f01ca650e3f4eb46ec6f7683b301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHp: 100
+  _contactDamage: 20
 --- !u!136 &2050588227
 CapsuleCollider:
   m_ObjectHideFlags: 0
