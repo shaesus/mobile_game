@@ -8,17 +8,21 @@ public class PlayerCombat : MonoBehaviour
 
     private PlayerShooter _shooter;
 
+    private BuffContainer _buffContainer;
+
     [SerializeField] private float _contactDamage = 20f;
 
     private void Awake()
     {
         _shooter = GetComponent<PlayerShooter>();
 
-        _weapon = new Pistol();
+        _buffContainer = new BuffContainer();
+
+        _weapon = new AssaultRifle();
 
         if (_weapon is Gun)
         {
-            _shooter.Gun = _weapon as Pistol;
+            _shooter.Gun = _weapon as AssaultRifle;
             _shooter.enabled = true;
         }
         else

@@ -8,11 +8,14 @@ public abstract class Gun : Weapon
 
     public override void Attack(Transform shootPoint, Transform target)
     {
-        GameObject.Instantiate(ProjectilePrefab, shootPoint.position, Quaternion.identity)
-            .TryGetComponent<Rigidbody>(out var projectileRb);
+        var projectileGO = GameObject.Instantiate(ProjectilePrefab, shootPoint.position, Quaternion.identity);
+
+        projectileGO.TryGetComponent<Projectile>(out var projectile);
+        projectile.Damage = Damage;
+
+        projectileGO.TryGetComponent<Rigidbody>(out var projectileRb);
         var direction = target.position - projectileRb.position;
         var fixedDirection = new Vector3(direction.x, 0, direction.z).normalized;
-
         projectileRb.AddForce(fixedDirection * ProjectileSpeed, ForceMode.Impulse);
     }
 }

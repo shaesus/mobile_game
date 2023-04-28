@@ -6,11 +6,17 @@ public class PlayerShooter : MonoBehaviour
     public Gun Gun { get; set; }
 
     public Transform ShootPoint => _shootPoint;
-    public Transform Target { get; private set; }
 
     [SerializeField] private Transform _shootPoint;
 
     private Coroutine _shootingCoroutine;
+
+    private PlayerAimer _playerAimer;
+
+    private void Awake()
+    {
+        _playerAimer = GetComponent<PlayerAimer>();
+    }
 
     private void OnEnable()
     {
@@ -20,25 +26,18 @@ public class PlayerShooter : MonoBehaviour
 
     private void OnDisable()
     {
-        StopCoroutine(_shootingCoroutine);
-    }
-
-    private void Update()
-    {
-        if (enabled == false)
-            return;
-
-        Target = ClosestEnemySeeker.FindTheClosestEnemy();
+        if (_shootingCoroutine != null)
+            StopCoroutine(_shootingCoroutine);
     }
 
     private IEnumerator StartShooting()
     {
         while (true)
         {
-            if (Target != null)
-                Gun.Attack(_shootPoint, Target);
+            if (_playerAimer.FollowTarget != null)
+                Gun.Attack(_shootPoint, _playerAimer.FollowTarget);
 
-            yield return new WaitForSeconds(Gun.AttackSpeed);
+            yield return new WaitForSeconds(1f / Gun.AttackSpeed);
         }
     }
 }
