@@ -10,9 +10,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float _maxHp = 100f;
     private float _currentHp;
 
-    [SerializeField] private float _contactDamage = 20f;
-    public float ContactDamage { get { return _contactDamage; } }
-
     private void Awake()
     {
         if (Instance == null)

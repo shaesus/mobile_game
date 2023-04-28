@@ -67,10 +67,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent<Player>(out var player))
+        if (collision.gameObject.TryGetComponent<PlayerCombat>(out var playerCombat))
         {
-            TakeDamage(player.ContactDamage);
-            player.TakeDamage(_damage);
+            TakeDamage(playerCombat.ContactDamage);
+            Player.Instance.TakeDamage(_damage);
         }
     }
 }
