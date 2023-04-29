@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Pistol : Gun
+public sealed class Pistol : Gun
 {
     public Pistol()
     {
@@ -8,9 +8,11 @@ public class Pistol : Gun
         if (pistolInfo != null)
         {
             AttackSpeed = pistolInfo.AttackSpeed;
-            Damage = pistolInfo.Damage;
+            PureDamage = pistolInfo.Damage;
             ProjectileSpeed = pistolInfo.ProjectileSpeed;
             ProjectilePrefab = pistolInfo.ProjectilePrefab;
+
+            AdditionalDamagePercents = 0;
         }
     }
 }

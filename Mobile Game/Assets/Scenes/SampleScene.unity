@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 1
-  _maxHp: 100
+  _maxHp: 10000
   _damage: 30
 --- !u!54 &96831933
 Rigidbody:
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 1
-  _maxHp: 100
+  _maxHp: 10000
   _damage: 30
 --- !u!54 &1986194425
 Rigidbody:

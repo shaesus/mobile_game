@@ -5,15 +5,15 @@ public class Rotator : MonoBehaviour
 {
     public Transform FollowTarget { get; protected set; }
 
-    protected Rigidbody _rb;
+    protected Rigidbody Rb;
 
-    protected Vector3 _rotationDirection;
+    protected Vector3 RotationDirection;
 
-    protected float _angleToTarget;
+    protected float AngleToTarget;
 
     protected virtual void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
+        Rb = GetComponent<Rigidbody>();
     }
 
     protected virtual void FixedUpdate()
@@ -21,13 +21,13 @@ public class Rotator : MonoBehaviour
         if (FollowTarget == null) 
             return;
 
-        var unfixedDirection = FollowTarget.position - _rb.position;
-        _rotationDirection = new Vector3(unfixedDirection.x, 0, unfixedDirection.z); //Fixed direction
+        var unfixedDirection = FollowTarget.position - Rb.position;
+        RotationDirection = new Vector3(unfixedDirection.x, 0, unfixedDirection.z); //Fixed direction
 
-        _angleToTarget = Vector3.Angle(_rotationDirection, Vector3.right);
-        if (FollowTarget.position.z > _rb.position.z)
-            _angleToTarget *= -1;
+        AngleToTarget = Vector3.Angle(RotationDirection, Vector3.right);
+        if (FollowTarget.position.z > Rb.position.z)
+            AngleToTarget *= -1;
 
-        _rb.rotation = Quaternion.Euler(0, _angleToTarget, 0); //Rotating only around Y-axis
+        Rb.rotation = Quaternion.Euler(0, AngleToTarget, 0); //Rotating only around Y-axis
     }
 }

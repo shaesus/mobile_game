@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AssaultRifle : Gun
+public sealed class AssaultRifle : Gun
 {
     public AssaultRifle()
     {
@@ -8,9 +8,11 @@ public class AssaultRifle : Gun
         if (assaultRifleInfo != null)
         {
             AttackSpeed = assaultRifleInfo.AttackSpeed;
-            Damage = assaultRifleInfo.Damage;
+            PureDamage = assaultRifleInfo.Damage;
             ProjectileSpeed = assaultRifleInfo.ProjectileSpeed;
             ProjectilePrefab = assaultRifleInfo.ProjectilePrefab;
+
+            AdditionalDamagePercents = 0;
         }
     }
 }

@@ -18,14 +18,34 @@ public class PlayerCombat : MonoBehaviour
 
         _buffContainer = new BuffContainer();
 
-        _weapon = new AssaultRifle();
+        _weapon = new Pistol();
 
         if (_weapon is Gun)
         {
-            _shooter.Gun = _weapon as AssaultRifle;
+            _shooter.Gun = _weapon as Pistol;
             _shooter.enabled = true;
         }
         else
             _shooter.enabled = false;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            _buffContainer.AddBuff(new PercentDamageBuff(_weapon, BuffQuality.Legendary));
+        }
+        else if (Input.GetKeyDown(KeyCode.F))
+        {
+            _buffContainer.RemoveBuff(new PercentDamageBuff(_weapon, BuffQuality.Legendary));
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            _buffContainer.AddBuff(new PureDamageBuff(_weapon, BuffQuality.Legendary));
+        }
+        else if (Input.GetKeyDown(KeyCode.G))
+        {
+            _buffContainer.RemoveBuff(new PureDamageBuff(_weapon, BuffQuality.Legendary));
+        }
     }
 }
