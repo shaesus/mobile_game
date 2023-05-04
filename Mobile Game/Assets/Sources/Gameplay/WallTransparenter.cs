@@ -59,11 +59,11 @@ public class WallTransparenter : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(_cameraTransform.position, _rayCastDirection * 100);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawRay(_cameraTransform.position, _rayCastDirection * 100);
+    //}
     
     private void ChangeWallsTransparency(bool transparent)
     {

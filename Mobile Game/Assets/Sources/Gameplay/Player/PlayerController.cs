@@ -45,12 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             var offset = _fingerPoint - _joystickCenter;
             _moveDirection = new Vector3(offset.x, 0, offset.y).normalized;
-            MovePlayer(_moveDirection, _moveSpeed);
+            _rb.MovePosition(_rb.position + _moveDirection * _moveSpeed * Time.fixedDeltaTime);
         }
-    }
-
-    private void MovePlayer(Vector3 direction, float speed)
-    {
-        _rb.MovePosition(_rb.position + direction * speed * Time.fixedDeltaTime);
     }
 }
