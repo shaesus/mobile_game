@@ -5,10 +5,6 @@ public class PlayerShooter : MonoBehaviour
 {
     public Gun Gun { get; set; }
 
-    public Transform ShootPoint => _shootPoint;
-
-    [SerializeField] private Transform _shootPoint;
-
     private Coroutine _shootingCoroutine;
 
     private PlayerAimer _playerAimer;
@@ -35,7 +31,7 @@ public class PlayerShooter : MonoBehaviour
         while (true)
         {
             if (_playerAimer.FollowTarget != null)
-                Gun.Attack(_shootPoint, _playerAimer.FollowTarget);
+                Gun.Attack(_playerAimer.FollowTarget);
 
             yield return new WaitForSeconds(1f / Gun.AttackSpeed);
         }

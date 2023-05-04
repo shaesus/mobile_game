@@ -12,7 +12,7 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] private float _contactDamage = 20f;
 
-    private void Awake()
+    private void Start()
     {
         _shooter = GetComponent<PlayerShooter>();
 

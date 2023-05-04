@@ -2,13 +2,38 @@ using UnityEngine;
 
 public abstract class Gun : Weapon
 {
-    public float ProjectileSpeed { get; protected set; }
+    protected float ProjectileSpeed;
 
-    public GameObject ProjectilePrefab { get; protected set; }
+    protected GameObject ProjectilePrefab;
+    protected GameObject GunModel;
 
-    public override void Attack(Transform shootPoint, Transform target)
+    protected Transform ShootPoint;
+
+    protected Gun(string gunInfoPath)
     {
-        var projectileGO = GameObject.Instantiate(ProjectilePrefab, shootPoint.position, Quaternion.identity);
+        var gunInfo = Resources.Load(gunInfoPath, typeof(GunInfo)) as GunInfo;
+        if (gunInfo != null)
+        {
+            AttackSpeed = gunInfo.AttackSpeed;
+            PureDamage = gunInfo.Damage;
+            ProjectileSpeed = gunInfo.ProjectileSpeed;
+            ProjectilePrefab = gunInfo.ProjectilePrefab;
+
+            var playerTransform = Player.Instance.transform;
+
+            ShootPoint = Transform.Instantiate(gunInfo.ShootPoint, playerTransform);
+            ShootPoint.parent = playerTransform;
+
+            GunModel = GameObject.Instantiate(gunInfo.GunModel, playerTransform);
+            GunModel.transform.parent = playerTransform;
+
+            AdditionalDamagePercents = 0;
+        }
+    }
+
+    public override void Attack(Transform target)
+    {
+        var projectileGO = GameObject.Instantiate(ProjectilePrefab, ShootPoint.position, Quaternion.identity);
 
         projectileGO.TryGetComponent<Projectile>(out var projectile);
         projectile.Damage = Damage;

@@ -9,7 +9,7 @@ public abstract class Weapon
     protected float PureDamage;
     protected float AdditionalDamagePercents;
 
-    public abstract void Attack(Transform attackPoint, Transform target);
+    public abstract void Attack(Transform target);
 
     public void IncreaseDamagePercents(float percent)
     {

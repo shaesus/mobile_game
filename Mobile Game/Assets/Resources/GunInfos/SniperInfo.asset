@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ed8e8ee2d2dc794ba16a2d595449bac, type: 3}
-  m_Name: AssaultRifleInfo
+  m_Name: SniperInfo
   m_EditorClassIdentifier: 
-  _attackSpeed: 5
-  _damage: 3
-  _projectileSpeed: 20
+  _attackSpeed: 0.5
+  _damage: 40
+  _projectileSpeed: 30
   _projectilePrefab: {fileID: 8473471697789084555, guid: 625eb072dedd64e4693481c7cb50dc7e, type: 3}
-  _gunModel: {fileID: 2015769820179998417, guid: c8d0fc4b5a29a8a4ea2fca831a74e19f, type: 3}
-  _shootPoint: {fileID: 642570157758222344, guid: 7095e56cae5bfe141a590bbbb293d65c, type: 3}
+  _gunModel: {fileID: 6562479015666260187, guid: 18ff7be0b4c30cd479268907619372a3, type: 3}
+  _shootPoint: {fileID: 36112137016534342, guid: 20ee165e7b4aa2241b4ac5dc84c1ba8c, type: 3}
