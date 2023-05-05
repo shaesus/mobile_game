@@ -9,6 +9,10 @@ public abstract class Weapon
     protected float PureDamage;
     protected float AdditionalDamagePercents;
 
+    protected float AttackDistance;
+
+    protected GameObject WeaponModel;
+
     public abstract void Attack(Transform target);
 
     public void IncreaseDamagePercents(float percent)

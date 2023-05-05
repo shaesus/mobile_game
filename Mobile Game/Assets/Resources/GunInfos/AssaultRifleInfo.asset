@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackSpeed: 5
   _damage: 3
+  _attackDistance: 12
+  _weaponModel: {fileID: 2015769820179998417, guid: c8d0fc4b5a29a8a4ea2fca831a74e19f, type: 3}
   _projectileSpeed: 20
   _projectilePrefab: {fileID: 8473471697789084555, guid: 625eb072dedd64e4693481c7cb50dc7e, type: 3}
-  _gunModel: {fileID: 2015769820179998417, guid: c8d0fc4b5a29a8a4ea2fca831a74e19f, type: 3}
   _shootPoint: {fileID: 642570157758222344, guid: 7095e56cae5bfe141a590bbbb293d65c, type: 3}

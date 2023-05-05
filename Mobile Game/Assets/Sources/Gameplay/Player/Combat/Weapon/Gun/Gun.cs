@@ -5,7 +5,6 @@ public abstract class Gun : Weapon
     protected float ProjectileSpeed;
 
     protected GameObject ProjectilePrefab;
-    protected GameObject GunModel;
 
     protected Transform ShootPoint;
 
@@ -16,23 +15,26 @@ public abstract class Gun : Weapon
         {
             AttackSpeed = gunInfo.AttackSpeed;
             PureDamage = gunInfo.Damage;
+            AttackDistance = gunInfo.AttackDistance;
             ProjectileSpeed = gunInfo.ProjectileSpeed;
             ProjectilePrefab = gunInfo.ProjectilePrefab;
+            AdditionalDamagePercents = 0;
 
             var playerTransform = Player.Instance.transform;
 
             ShootPoint = Transform.Instantiate(gunInfo.ShootPoint, playerTransform);
             ShootPoint.parent = playerTransform;
 
-            GunModel = GameObject.Instantiate(gunInfo.GunModel, playerTransform);
-            GunModel.transform.parent = playerTransform;
-
-            AdditionalDamagePercents = 0;
+            WeaponModel = GameObject.Instantiate(gunInfo.WeaponModel, playerTransform);
+            WeaponModel.transform.parent = playerTransform;
         }
     }
 
     public override void Attack(Transform target)
     {
+        if (ClosestEnemySeeker.DistancesToEnemies[target] > AttackDistance)
+            return;
+
         var projectileGO = GameObject.Instantiate(ProjectilePrefab, ShootPoint.position, Quaternion.identity);
 
         projectileGO.TryGetComponent<Projectile>(out var projectile);

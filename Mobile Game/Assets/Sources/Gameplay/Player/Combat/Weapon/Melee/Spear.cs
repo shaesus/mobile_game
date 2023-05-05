@@ -1,7 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MeleeWeapon : Weapon
+public class Spear : MeleeWeapon
 {
+    public Spear() : base(@"MeleeWeaponInfos/SpearInfo") { }
+
     public override void Attack(Transform target)
     {
         throw new System.NotImplementedException();

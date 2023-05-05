@@ -19,6 +19,7 @@ public class PlayerCombat : MonoBehaviour
         _buffContainer = new BuffContainer();
 
         _weapon = new Pistol();
+        Debug.Log($"Weapon is {_weapon}");
 
         if (_weapon is Gun)
         {
@@ -26,7 +27,9 @@ public class PlayerCombat : MonoBehaviour
             _shooter.enabled = true;
         }
         else
+        {
             _shooter.enabled = false;
+        }
     }
 
     private void Update()

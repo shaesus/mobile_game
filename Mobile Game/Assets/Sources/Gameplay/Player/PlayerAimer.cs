@@ -12,7 +12,11 @@ public class PlayerAimer : Rotator
         if (FollowTarget == null) 
             return;
 
+        var distanceToTarget = ClosestEnemySeeker.DistancesToEnemies[FollowTarget];
+
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, transform.right * ClosestEnemySeeker.DistancesToEnemies[FollowTarget]);
+        Gizmos.DrawRay(transform.position, transform.right * distanceToTarget);
+
+        //Debug.Log($"Distance to target: {distanceToTarget}");
     }
 }
