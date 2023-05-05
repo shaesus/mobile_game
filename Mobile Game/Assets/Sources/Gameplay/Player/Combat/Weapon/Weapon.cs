@@ -13,6 +13,26 @@ public abstract class Weapon
 
     protected GameObject WeaponModel;
 
+    protected Weapon(string weaponInfoPath)
+    {
+        var weaponInfo = Resources.Load(weaponInfoPath, typeof(WeaponInfo)) as WeaponInfo;
+        if (weaponInfo == null)
+            return;
+
+        AttackSpeed = weaponInfo.AttackSpeed;
+        PureDamage = weaponInfo.Damage;
+        AttackDistance = weaponInfo.AttackDistance;
+        AdditionalDamagePercents = 0;
+
+        var playerTransform = Player.Instance.transform;
+
+        if (weaponInfo.WeaponModel == null)
+            return;//Remove soon
+
+        WeaponModel = GameObject.Instantiate(weaponInfo.WeaponModel, playerTransform);
+        WeaponModel.transform.parent = playerTransform;
+    }
+
     public abstract void Attack(Transform target);
 
     public void IncreaseDamagePercents(float percent)
