@@ -18,12 +18,12 @@ public class PlayerCombat : MonoBehaviour
 
         _buffContainer = new BuffContainer();
 
-        _weapon = new AssaultRifle();
+        _weapon = new SniperRifle();
         Debug.Log($"Weapon is {_weapon}");
 
         if (_weapon is Gun)
         {
-            _shooter.Gun = _weapon as AssaultRifle;
+            _shooter.Gun = _weapon as SniperRifle;
             _shooter.enabled = true;
         }
         else
