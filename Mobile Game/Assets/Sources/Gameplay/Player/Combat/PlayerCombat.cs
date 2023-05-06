@@ -18,7 +18,7 @@ public class PlayerCombat : MonoBehaviour
 
         _buffContainer = new BuffContainer();
 
-        _weapon = new Spear();
+        _weapon = new AssaultRifle();
         Debug.Log($"Weapon is {_weapon}");
 
         if (_weapon is Gun)

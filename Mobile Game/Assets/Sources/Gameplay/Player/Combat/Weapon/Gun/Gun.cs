@@ -28,7 +28,8 @@ public abstract class Gun : Weapon
         if (ClosestEnemySeeker.DistancesToEnemies[target] > AttackDistance)
             return;
 
-        var projectileGO = GameObject.Instantiate(ProjectilePrefab, ShootPoint.position, Quaternion.identity);
+        var playerRotation = Player.Instance.transform.rotation;
+        var projectileGO = GameObject.Instantiate(ProjectilePrefab, ShootPoint.position, playerRotation);
 
         projectileGO.TryGetComponent<Projectile>(out var projectile);
         projectile.Damage = Damage;
