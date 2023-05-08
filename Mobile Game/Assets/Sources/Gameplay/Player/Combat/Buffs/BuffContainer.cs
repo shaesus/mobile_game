@@ -9,20 +9,31 @@ public class BuffContainer
 
     private List<Buff> _buffs;
 
+    private int _capacity;
+
     public BuffContainer()
     {
-        _buffs = new List<Buff>();
+        _capacity = 6;
+
+        _buffs = new List<Buff>(_capacity);
     }
 
     public void AddBuff(Buff buff)
     {
-        if (buff != null)
+        if (buff == null)
+            return;
+
+        if (_buffs.Count < _capacity)
         {
             _buffs.Add(buff);
             buff.EnableBuff();
-
-            Debug.Log($"Buff count: {_buffs.Count}");
         }
+        else
+        {
+            //Buff choice menu
+        }
+
+        Debug.Log($"Buff count: {_buffs.Count}");
 
         BuffAdded?.Invoke();
     }

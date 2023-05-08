@@ -13,6 +13,8 @@ public abstract class Weapon
 
     protected GameObject WeaponModel;
 
+    protected GameObject PickupPrefab;
+
     protected Weapon(string weaponInfoPath)
     {
         var weaponInfo = Resources.Load(weaponInfoPath, typeof(WeaponInfo)) as WeaponInfo;
@@ -31,9 +33,23 @@ public abstract class Weapon
 
         AttackPoint = Transform.Instantiate(weaponInfo.AttackPoint, playerTransform);
         AttackPoint.parent = playerTransform;
+
+        PickupPrefab = weaponInfo.PickupPrefab;
     }
 
     public abstract void Attack(Transform target);
+
+    public void DropWeapon()
+    {
+        var playerTransform = Player.Instance.transform;
+        var pickupPos = new Vector3(playerTransform.position.x, PickupPrefab.transform.position.y,
+            playerTransform.position.z) + playerTransform.right * 2;
+
+        GameObject.Instantiate(PickupPrefab, pickupPos, Quaternion.identity);
+
+        GameObject.Destroy(WeaponModel);
+        GameObject.Destroy(AttackPoint.gameObject);
+    }
 
     public void IncreaseDamagePercents(float percent)
     {

@@ -16,6 +16,7 @@ MonoBehaviour:
   _damage: 25
   _attackDistance: 3
   _weaponModel: {fileID: 4651991862644365984, guid: 50b6f1d3351f03d4f91030bd6503f7aa, type: 3}
+  _pickupPrefab: {fileID: 4942565259176627485, guid: 0f19c962434cab74591463ae8fac78f5, type: 3}
   _attackPoint: {fileID: 3196848095774557497, guid: 9e5883c5bc02f3948a5784de20755b26, type: 3}
   _enemyLayers:
     serializedVersion: 2

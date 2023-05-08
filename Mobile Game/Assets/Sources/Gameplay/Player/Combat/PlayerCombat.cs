@@ -18,9 +18,20 @@ public class PlayerCombat : MonoBehaviour
 
         _buffContainer = new BuffContainer();
 
-        _weapon = new Knife();
+        _weapon = new Pistol();
         Debug.Log($"Weapon is {_weapon}");
         _attacker.Weapon = _weapon;
+        _attacker.enabled = true;
+    }
+
+    public void SetWeapon(Weapon weapon)
+    {
+        _attacker.enabled = false;
+
+        _weapon.DropWeapon();
+        _weapon = weapon;
+        _attacker.Weapon = _weapon;
+
         _attacker.enabled = true;
     }
 
