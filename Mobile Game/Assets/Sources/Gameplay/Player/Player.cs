@@ -5,7 +5,8 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
-    public event Action PlayerDie;
+    public event Action PlayerDied;
+    public event Action PlayerTookDamage;
 
     [SerializeField] private float _maxHp = 100f;
     private float _currentHp;
@@ -19,12 +20,12 @@ public class Player : MonoBehaviour
 
         _currentHp = _maxHp;
 
-        PlayerDie += () => Instance = null;
+        PlayerDied += () => Instance = null;
     }
 
     private void Die()
     {
-        PlayerDie?.Invoke();
+        PlayerDied?.Invoke();
 
         Destroy(gameObject);
     }
@@ -32,6 +33,8 @@ public class Player : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHp -= damage;
+        PlayerTookDamage?.Invoke();
+
         if (_currentHp <= 0)
             Die();
     }

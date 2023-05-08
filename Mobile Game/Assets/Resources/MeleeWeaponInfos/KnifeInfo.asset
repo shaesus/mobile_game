@@ -20,5 +20,5 @@ MonoBehaviour:
   _enemyLayers:
     serializedVersion: 2
     m_Bits: 8
-  _knockbackForce: 4
+  _knockbackForce: 5
   _attackAngle: 45

@@ -4,7 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
-    public event Action EnemyDie;
+    public event Action EnemyDied;
+    public event Action EnemyTookDamage;
 
     [SerializeField] private float _maxHp = 100f;
     private float _currentHp;
@@ -15,7 +16,7 @@ public class Enemy : MonoBehaviour
     {
         _currentHp = _maxHp;
 
-        EnemyDie += () => 
+        EnemyDied += () => 
         { 
             if (ClosestEnemySeeker.DistancesToEnemies.ContainsKey(transform))
                 ClosestEnemySeeker.DistancesToEnemies.Remove(transform);
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        EnemyDie?.Invoke();
+        EnemyDied?.Invoke();
 
         Destroy(gameObject);
     }
@@ -32,6 +33,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHp -= damage;
+        EnemyTookDamage?.Invoke();
+
         Debug.Log($"Enemy took {damage} damage");
 
         if (_currentHp <= 0) 

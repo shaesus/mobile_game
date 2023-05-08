@@ -46,8 +46,10 @@ public class PlayerAttacker : MonoBehaviour
 
         if (Weapon is MeleeWeapon)
         {
+            var weapon = Weapon as MeleeWeapon;
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(Weapon.AttackPoint.position, Weapon.AttackDistance);
+            AdditionalGizmos.DrawWireArc(weapon.AttackPoint.position, Player.Instance.transform.right,
+                weapon.AttackAngle * 2, weapon.AttackDistance);
         }
     }
 }
