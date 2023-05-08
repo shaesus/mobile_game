@@ -6,8 +6,6 @@ public abstract class Gun : Weapon
 
     protected GameObject ProjectilePrefab;
 
-    protected Transform ShootPoint;
-
     protected Gun(string gunInfoPath) : base(gunInfoPath)
     {
         var gunInfo = Resources.Load(gunInfoPath, typeof(GunInfo)) as GunInfo;
@@ -16,11 +14,6 @@ public abstract class Gun : Weapon
 
         ProjectileSpeed = gunInfo.ProjectileSpeed;
         ProjectilePrefab = gunInfo.ProjectilePrefab;
-
-        var playerTransform = Player.Instance.transform;
-
-        ShootPoint = Transform.Instantiate(gunInfo.ShootPoint, playerTransform);
-        ShootPoint.parent = playerTransform;
     }
 
     public override void Attack(Transform target)
@@ -29,7 +22,7 @@ public abstract class Gun : Weapon
             return;
 
         var playerRotation = Player.Instance.transform.rotation;
-        var projectileGO = GameObject.Instantiate(ProjectilePrefab, ShootPoint.position, playerRotation);
+        var projectileGO = GameObject.Instantiate(ProjectilePrefab, AttackPoint.position, playerRotation);
 
         projectileGO.TryGetComponent<Projectile>(out var projectile);
         projectile.Damage = Damage;

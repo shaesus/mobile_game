@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackSpeed: 1
   _damage: 25
-  _attackDistance: 5
-  _weaponModel: {fileID: 0}
+  _attackDistance: 3
+  _weaponModel: {fileID: 4651991862644365984, guid: 50b6f1d3351f03d4f91030bd6503f7aa, type: 3}
+  _attackPoint: {fileID: 3196848095774557497, guid: 9e5883c5bc02f3948a5784de20755b26, type: 3}
+  _enemyLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  _knockbackForce: 4
+  _attackAngle: 45

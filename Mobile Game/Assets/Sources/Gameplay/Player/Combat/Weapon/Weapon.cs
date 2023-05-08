@@ -5,11 +5,11 @@ public abstract class Weapon
     public float AttackSpeed { get; protected set; }
 
     public float Damage => PureDamage * (1 + AdditionalDamagePercents / 100);
+    public Transform AttackPoint { get; protected set; }
+    public float AttackDistance { get; protected set; }
 
     protected float PureDamage;
     protected float AdditionalDamagePercents;
-
-    protected float AttackDistance;
 
     protected GameObject WeaponModel;
 
@@ -26,11 +26,11 @@ public abstract class Weapon
 
         var playerTransform = Player.Instance.transform;
 
-        if (weaponInfo.WeaponModel == null)
-            return;//Remove soon
-
         WeaponModel = GameObject.Instantiate(weaponInfo.WeaponModel, playerTransform);
         WeaponModel.transform.parent = playerTransform;
+
+        AttackPoint = Transform.Instantiate(weaponInfo.AttackPoint, playerTransform);
+        AttackPoint.parent = playerTransform;
     }
 
     public abstract void Attack(Transform target);

@@ -6,7 +6,7 @@ public class PlayerCombat : MonoBehaviour
 
     private Weapon _weapon;
 
-    private PlayerShooter _shooter;
+    private PlayerAttacker _attacker;
 
     private BuffContainer _buffContainer;
 
@@ -14,22 +14,14 @@ public class PlayerCombat : MonoBehaviour
 
     private void Start()
     {
-        _shooter = GetComponent<PlayerShooter>();
+        _attacker = GetComponent<PlayerAttacker>();
 
         _buffContainer = new BuffContainer();
 
-        _weapon = new SniperRifle();
+        _weapon = new Knife();
         Debug.Log($"Weapon is {_weapon}");
-
-        if (_weapon is Gun)
-        {
-            _shooter.Gun = _weapon as SniperRifle;
-            _shooter.enabled = true;
-        }
-        else
-        {
-            _shooter.enabled = false;
-        }
+        _attacker.Weapon = _weapon;
+        _attacker.enabled = true;
     }
 
     private void Update()

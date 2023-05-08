@@ -16,6 +16,6 @@ MonoBehaviour:
   _damage: 40
   _attackDistance: 35
   _weaponModel: {fileID: 1981910706610695077, guid: de46bae4b03ad104686c59f4c56c5fd5, type: 3}
+  _attackPoint: {fileID: 36112137016534342, guid: 20ee165e7b4aa2241b4ac5dc84c1ba8c, type: 3}
   _projectileSpeed: 30
   _projectilePrefab: {fileID: 8473471697789084555, guid: 762e9cfeff42b3644b0be401e2821d56, type: 3}
-  _shootPoint: {fileID: 36112137016534342, guid: 20ee165e7b4aa2241b4ac5dc84c1ba8c, type: 3}
