@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class WallTransparenter : MonoBehaviour
 {
+    [Range(0f, 1f)]
+    [SerializeField] private float _transparentAlpha = 0.5f;
+
     [SerializeField] private Transform _cameraTransform;
 
     [SerializeField] private LayerMask _wallLayer;
@@ -70,7 +73,7 @@ public class WallTransparenter : MonoBehaviour
         if (transparent)
         {
             _wallMaterial.ToFadeMode();
-            _wallMaterial.ChangeAlpha(0.5f);
+            _wallMaterial.ChangeAlpha(_transparentAlpha);
             _wallsAreTransparent = true;
         }
         else
