@@ -51,4 +51,12 @@ public class BuffContainer
 
         BuffRemoved?.Invoke();
     }
+
+    public void UpdateBuffs()
+    {
+        foreach (var buff in _buffs)
+        {
+            buff.UpdateBuff();
+        }
+    }
 }

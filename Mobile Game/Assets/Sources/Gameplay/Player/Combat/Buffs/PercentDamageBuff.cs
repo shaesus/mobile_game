@@ -4,7 +4,7 @@ public sealed class PercentDamageBuff : DamageBuff
 {
     private readonly float _additionalDamagePercent;
 
-    public PercentDamageBuff(Weapon weapon, BuffQuality quality) : base(weapon, quality)
+    public PercentDamageBuff(BuffQuality quality) : base(quality)
     {
         if (Quality == BuffQuality.Common)
             _additionalDamagePercent = 5f;
@@ -18,22 +18,22 @@ public sealed class PercentDamageBuff : DamageBuff
 
     public override void EnableBuff()
     {
-        if (!IsEnabled)
-        {
-            Weapon.IncreaseDamagePercents(_additionalDamagePercent);
-            IsEnabled = true;
-            Debug.Log($"{this} enabled. Weapon damage = {Weapon.Damage}");
-        }
+        if (IsEnabled) 
+            return;
+
+        Weapon.IncreaseDamagePercents(_additionalDamagePercent);
+        IsEnabled = true;
+        Debug.Log($"{this} enabled. Weapon damage = {Weapon.Damage}");
     }
 
     public override void DisableBuff() 
     {
-        if (IsEnabled)
-        {
-            Weapon.DecreaseDamagePercents(_additionalDamagePercent);
-            IsEnabled = false;
-            Debug.Log($"{this} disabled. Weapon damage = {Weapon.Damage}");
-        }
+        if (!IsEnabled)
+            return;
+
+        Weapon.DecreaseDamagePercents(_additionalDamagePercent);
+        IsEnabled = false;
+        Debug.Log($"{this} disabled. Weapon damage = {Weapon.Damage}");
     }
 
     public override bool Equals(object obj)

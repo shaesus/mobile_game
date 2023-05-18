@@ -437,6 +437,10 @@ PrefabInstance:
       propertyPath: _moveSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1465138065222433812, guid: ab6192f500714b14a86887de9a4f4ff0, type: 3}
+      propertyPath: _maxHp
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 1465138065222433819, guid: ab6192f500714b14a86887de9a4f4ff0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -836,6 +840,10 @@ PrefabInstance:
     - target: {fileID: 1465138065222433808, guid: ab6192f500714b14a86887de9a4f4ff0, type: 3}
       propertyPath: _moveSpeed
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465138065222433812, guid: ab6192f500714b14a86887de9a4f4ff0, type: 3}
+      propertyPath: _maxHp
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 1465138065222433819, guid: ab6192f500714b14a86887de9a4f4ff0, type: 3}
       propertyPath: m_RootOrder

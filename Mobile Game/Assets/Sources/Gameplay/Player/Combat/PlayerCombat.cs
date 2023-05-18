@@ -4,7 +4,7 @@ public class PlayerCombat : MonoBehaviour
 {
     public float ContactDamage { get { return _contactDamage; } }
 
-    private Weapon _weapon;
+    public Weapon CurrentWeapon { get; private set; }
 
     private PlayerAttacker _attacker;
 
@@ -18,40 +18,42 @@ public class PlayerCombat : MonoBehaviour
 
         _buffContainer = new BuffContainer();
 
-        _weapon = new Pistol();
-        Debug.Log($"Weapon is {_weapon}");
-        _attacker.Weapon = _weapon;
-        _attacker.enabled = true;
+        SetWeapon(new Pistol());
     }
 
     public void SetWeapon(Weapon weapon)
     {
         _attacker.enabled = false;
 
-        _weapon.DropWeapon();
-        _weapon = weapon;
-        _attacker.Weapon = _weapon;
+        if (CurrentWeapon != null)
+            CurrentWeapon.DropWeapon();
+
+        CurrentWeapon = weapon;
+        Debug.Log($"Weapon is {CurrentWeapon}");
+        _attacker.Weapon = CurrentWeapon;
 
         _attacker.enabled = true;
+
+        _buffContainer.UpdateBuffs();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            _buffContainer.AddBuff(new PercentDamageBuff(_weapon, BuffQuality.Legendary));
+            _buffContainer.AddBuff(new PercentDamageBuff(BuffQuality.Legendary));
         }
         else if (Input.GetKeyDown(KeyCode.F))
         {
-            _buffContainer.RemoveBuff(new PercentDamageBuff(_weapon, BuffQuality.Legendary));
+            _buffContainer.RemoveBuff(new PercentDamageBuff(BuffQuality.Legendary));
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
-            _buffContainer.AddBuff(new PureDamageBuff(_weapon, BuffQuality.Legendary));
+            _buffContainer.AddBuff(new PureDamageBuff(BuffQuality.Legendary));
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
-            _buffContainer.RemoveBuff(new PureDamageBuff(_weapon, BuffQuality.Legendary));
+            _buffContainer.RemoveBuff(new PureDamageBuff(BuffQuality.Legendary));
         }
     }
 }

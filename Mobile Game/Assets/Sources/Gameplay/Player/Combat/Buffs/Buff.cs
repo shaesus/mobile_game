@@ -22,6 +22,7 @@ public abstract class Buff
 
     public abstract void EnableBuff();
     public abstract void DisableBuff();
+    public abstract void UpdateBuff();
 
     public override string ToString()
     {
