@@ -17,8 +17,6 @@ public class PlayerCombat : MonoBehaviour
         _attacker = GetComponent<PlayerAttacker>();
 
         _buffContainer = new BuffContainer();
-
-        SetWeapon(new Pistol());
     }
 
     public void SetWeapon(Weapon weapon)
